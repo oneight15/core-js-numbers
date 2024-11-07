@@ -84,8 +84,8 @@ function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  return -(b / a);
 }
 
 /**
@@ -175,8 +175,8 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  return Math.round(num / 10 ** pow) * 10 ** pow;
 }
 
 /**
@@ -215,8 +215,12 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (!Number.isNaN(+value) && typeof +value === 'number') {
+    return +value;
+  }
+
+  return def;
 }
 
 /**
@@ -306,8 +310,8 @@ function isPowerOfTwo(/* num */) {
  *   0 => 0
  *   Math.PI / 2 => 1
  */
-function getSine(/* num */) {
-  throw new Error('Not implemented');
+function getSine(num) {
+  return Math.sin(num);
 }
 
 /**
@@ -399,8 +403,16 @@ function getNumberValue(/* number */) {
  * 5        => true
  * '5'      => false
  */
-function isNumber(/* number */) {
-  throw new Error('Not implemented');
+function isNumber(number) {
+  if (
+    Number.isFinite(number) &&
+    !Number.isNaN(number) &&
+    typeof number === 'number'
+  ) {
+    return true;
+  }
+
+  return false;
 }
 
 /**
@@ -414,8 +426,8 @@ function isNumber(/* number */) {
  * 5.1  => false
  * '5'  => false
  */
-function isInteger(/* number */) {
-  throw new Error('Not implemented');
+function isInteger(number) {
+  return Number.isInteger(number);
 }
 
 /**
@@ -428,8 +440,8 @@ function isInteger(/* number */) {
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
  */
-function getFloatOnString(/* str */) {
-  throw new Error('Not implemented');
+function getFloatOnString(str) {
+  return Number.parseFloat(str);
 }
 
 /**
@@ -446,8 +458,8 @@ function getFloatOnString(/* str */) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  return Number.parseInt(str, base);
 }
 
 /**
